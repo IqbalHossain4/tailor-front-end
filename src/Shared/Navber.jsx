@@ -6,21 +6,19 @@ const Navber = () => {
   const [kids, setKids] = useState(true);
   const [couple, setCouple] = useState(true);
   const [srcBtn, setSrcBtn] = useState(true);
-  const [menu, setMenu] = useState(true);
-  const [category, setCategory] = useState(true);
   //nav Options
   const navOptions = (
     <div className="flex items-center gap-4 cursor-pointer">
       <li className="nav-link py-2 md:px-6 px-2">Home</li>
       <li className="nav-link py-2 md:px-6 px-2">About</li>
-      <li className="nav-link py-2 md:px-6 px-2">Home</li>
+      <li className="nav-link py-2 md:px-6 px-2">Contact Us</li>
       <li className="nav-link py-2 md:px-6 px-2">SignIn</li>
     </div>
   );
 
   return (
-    <div>
-      <div className="navbar bg-white">
+    <div className="containers">
+      <div className="navbar py-4 font-semibold bg-white">
         <div className="navbar-start">
           <div className="dropdown nav-link p-3  cursor-pointer ">
             <label tabIndex={0}>
@@ -43,20 +41,19 @@ const Navber = () => {
 
             <ul
               tabIndex={0}
-              className="menu menu-sm py-8 px-4  dropdown-content flex flex-col gap-3 mt-3 z-[1] bg-neumor text-center"
+              className="menu menu-sm py-8 px-4  dropdown-content md:w-[300px] flex flex-col gap-3 mt-3 z-[1] bg-neumor text-center"
             >
               <div className="md:hidden block">{navOptions}</div>
               <h4 className="font-semibold bg-black text-white rounded-md py-1 px-2">
                 Categories
               </h4>
               <li onClick={() => setMen(!men)}>
-                <span className="nav-link p-2 hover:bg-[#f0f8ff]">
+                <span className="nav-link  p-2 hover:bg-[#f0f8ff]">
                   Men
                   {!men ? <FaAngleDown /> : <FaAngleRight />}
                 </span>
                 {!men ? (
                   <ul className="flex  flex-col gap-4 rounded-md py-4 px-4">
-                    <li className="nav-link p-2 ">T-Shirt</li>
                     <li className="nav-link p-2">Shirt</li>
                     <li className="nav-link p-2">Punjabi</li>
                     <li className="nav-link p-2">Pent</li>
@@ -189,7 +186,7 @@ const Navber = () => {
                 />
               </svg>
             ) : (
-              <span className="text-[20px]">x</span>
+              <span className="text-[15px]">Cancel</span>
             )}
           </button>
           <button className="rounded-full ">
