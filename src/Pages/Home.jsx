@@ -9,9 +9,9 @@ const Home = () => {
     <div>
       <ExtraNav />
       <Navber />
-      <div className="h-[calc(100vh-400px)]">
-        <Outlet />
-      </div>
+      {/* <div className="h-[calc(400px-100vh)]"> */}
+      <Outlet />
+      {/* </div> */}
       <Footer />
     </div>
   );

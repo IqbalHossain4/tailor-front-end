@@ -24,6 +24,11 @@
   box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
 }
 
+.bg-inner {
+  background: #e0e0e0;
+  box-shadow: inset 29px 29px 65px #aaaaaa, inset -29px -29px 65px #ffffff;
+}
+
 :root {
   font-family: "Nunito Sans", sans-serif;
   font-family: "Poppins", sans-serif;
@@ -52,25 +57,12 @@ body {
 .borders {
   border-right: 1px solid black;
 }
-/* .input {
-  width: 200px;
-  height: 45px;
-  border: none;
-  outline: none;
-  padding: 0px 7px;
-  border-radius: 6px;
-  color: #d1d8ec;
-  font-size: 15px;
-  background-color: transparent;
-  box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-} */
 
 .input-container {
   position: relative;
   margin: 20px;
 }
 
-/* Input field */
 .input-field {
   display: block;
   width: 100%;
@@ -83,7 +75,6 @@ body {
   box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
 }
 
-/* Input label */
 .input-label {
   position: absolute;
   top: 0;
@@ -94,7 +85,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Input highlight */
 .input-highlight {
   position: absolute;
   bottom: 0;
@@ -105,7 +95,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Input field:focus styles */
 .input-field:focus + .input-label {
   top: -20px;
   font-size: 12px;
@@ -115,73 +104,3 @@ body {
 .input-field:focus + .input-label + .input-highlight {
   width: 100%;
 }
-
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
