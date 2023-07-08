@@ -3,11 +3,16 @@ import Main from "../Layouts/Main";
 import Saller from "../Pages/joinUs/Saller";
 import Buyer from "../Pages/joinUs/Buyer";
 import Login from "../Pages/SignIn/Login";
+import Home from "../Pages/Home";
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "saller",
         element: <Saller />,

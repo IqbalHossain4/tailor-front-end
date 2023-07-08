@@ -24,6 +24,12 @@
   box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
 }
 
+.just-neumor {
+  background: #d1d8ec;
+  -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+  box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+}
+
 .bg-inner {
   background: #e0e0e0;
   box-shadow: inset 29px 29px 65px #aaaaaa, inset -29px -29px 65px #ffffff;
@@ -44,6 +50,12 @@ body {
 .containers {
   width: 95%;
   margin: 0 auto;
+}
+
+.containerr {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 30px;
 }
 .btn-transfer {
   transform: translateX(-1000%);
@@ -71,6 +83,11 @@ body {
   border: none;
   border-bottom: 2px solid #b2b8c9;
   outline: none;
+  background-color: transparent;
+  box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+}
+
+.box-shad {
   background-color: transparent;
   box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
 }
