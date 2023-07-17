@@ -61,7 +61,7 @@ const Login = () => {
   return (
     <div>
       <SubHeader title={"SignIn"} />
-      <div className="w-full h-full flex items-center justify-center mt-4">
+      <div className="w-full h-full flex items-center justify-center mt-4 font-serif">
         <div className="border p-16 ">
           <form onSubmit={handleLogin}>
             <div className="flex flex-col">

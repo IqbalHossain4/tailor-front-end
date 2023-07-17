@@ -79,7 +79,7 @@ const Saller = () => {
   return (
     <div>
       <SubHeader title={"Join Us as a Saller"} />
-      <div className="w-full h-full flex items-center justify-center my-24">
+      <div className="w-full h-full flex items-center justify-center my-24 font-serif">
         <div className=" border p-16">
           <form onSubmit={handleSaller}>
             <div className="flex flex-col">

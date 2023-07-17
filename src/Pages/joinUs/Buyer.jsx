@@ -100,7 +100,7 @@ const Buyer = () => {
   return (
     <div>
       <SubHeader title={"Join Us as a Buyer"} />
-      <div className="w-full h-full flex items-center justify-center mt-24">
+      <div className="w-full h-full flex items-center justify-center mt-24 font-serif">
         <div className=" border p-16 ">
           <form onSubmit={handleBuyerForm}>
             <div className="flex flex-col">

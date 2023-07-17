@@ -3,6 +3,22 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Roboto+Condensed:ital,wght@0,300;0,400;1,300;1,400&family=Roboto+Mono:ital,wght@0,100;0,200;1,100;1,200;1,300&display=swap");
 
+:root {
+  font-family: "Nunito Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Mono", monospace;
+  --colorMain: #d1d8ec;
+  --brShadow: -6px 6px 15px rgba(0, 0, 0, 0.5);
+  --tlShadow: 6px -6px 15px rgba(255, 255, 255, 0.8);
+}
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Mono", monospace;
+}
+
 .nav-link {
   -webkit-border-radius: 50px;
   border-radius: 50px;
@@ -13,6 +29,19 @@
 }
 
 .nav-link:hover {
+  background: #f0f8ff;
+}
+
+.hoverBtn {
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  background: #d1d8ec;
+  -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+  box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+  transition: all 0.4s;
+}
+
+.btnHover:hover .hoverBtn {
   background: #f0f8ff;
 }
 
@@ -35,18 +64,44 @@
   box-shadow: inset 29px 29px 65px #aaaaaa, inset -29px -29px 65px #ffffff;
 }
 
-:root {
-  font-family: "Nunito Sans", sans-serif;
-  font-family: "Poppins", sans-serif;
-  font-family: "Roboto Condensed", sans-serif;
-  font-family: "Roboto Mono", monospace;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-body {
-  font-family: "Nunito Sans", sans-serif;
-  font-family: "Poppins", sans-serif;
-  font-family: "Roboto Condensed", sans-serif;
-  font-family: "Roboto Mono", monospace;
+
+.shado {
+  color: var(--colorMain);
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: var(--brShadow), var(--tlShadow);
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    background: var(--colorMain);
+    content: "";
+    border-radius: 10%;
+  }
+
+  &::before {
+    left: 0;
+    width: 100px;
+    height: 100px;
+    top: -150px;
+    z-index: 10;
+    box-shadow: inset var(--brShadow), inset var(--tlShadow);
+  }
+  &::after {
+    left: -50px;
+    width: 50px;
+    height: 50px;
+    top: -20px;
+    box-shadow: var(--brShadow), var(--tlShadow);
+  }
 }
+
 .containers {
   width: 95%;
   margin: 0 auto;
@@ -57,6 +112,7 @@ body {
   margin: 0 auto;
   margin-top: 30px;
 }
+
 .btn-transfer {
   transform: translateX(-1000%);
   transition-duration: 500ms;
@@ -120,4 +176,28 @@ body {
 
 .input-field:focus + .input-label + .input-highlight {
   width: 100%;
+}
+/* chart btn */
+.chart {
+  height: 500px;
+  overflow: hidden;
+}
+.addbtn {
+  background: white;
+  transition: all 0.2s ease-in-out;
+}
+.chart:hover .addbtn {
+  height: auto;
+  transform: translateY(-50px);
+}
+
+@media only screen and (max-width: 600px) {
+  .chart {
+    height: auto;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .chart {
+    height: auto;
+  }
 }

@@ -17,7 +17,7 @@ const Banner = () => {
 
   return (
     <div>
-      <div>
+      <div className="relative w-full h-full font-serif">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -33,35 +33,67 @@ const Banner = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <div className="md:h-[700px] h-[200px] w-[100%] relative">
+            <div className="relative md:h-[700px] h-[200px] w-[100%] ">
               <img className="h-[100%] w-[100%]" src={baannerImg} alt="" />
-              <div className="absolute w-full h-full  text-red-500 text-[50px]">
-                <h4>Hello</h4>
+              <div className="absolute   top-[35%] left-[35%] ">
+                <div className="w-full relative z-[11]">
+                  <h1 className="md:text-[40px] lg:text-[60px] text-[18px] font-extrabold  capitalize shado">
+                    Find your <span className="text-black">choice</span>
+                  </h1>
+                  <button className="absolute md:top-[150px] top-[30px] md:left-[35%] left-[15%] nav-link md:py-2 py-1 md:px-4 px-2  capitalize font-semibold ">
+                    Shop Now!
+                  </button>
+                </div>
               </div>
+              <div className="absolute bg-black w-full  h-full opacity-20 top-1 left-1"></div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="md:h-[700px] h-[200px] w-[100%]">
+            <div className="relative md:h-[700px] h-[200px] w-[100%] ">
               <img className="h-[100%] w-[100%]" src={baannerImg2} alt="" />
+              <div className="absolute   top-[35%] left-[35%] ">
+                <div className="w-full relative z-[11]">
+                  <h1 className="md:text-[40px] lg:text-[60px] text-[18px] font-extrabold  capitalize shado">
+                    Show your <span className="text-black">creativity</span>
+                  </h1>
+                  <button className="absolute md:top-[150px] top-[30px] md:left-[35%] left-[15%] nav-link md:py-2 py-1 md:px-4 px-2  capitalize font-semibold">
+                    Join Us!
+                  </button>
+                </div>
+              </div>
+              <div className="absolute bg-black w-full  h-full opacity-10 top-1 left-1"></div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="md:h-[700px] h-[200px] w-[100%]">
-              <video
-                loop
-                muted
-                autoPlay={"autoplay"}
-                ref={vidRef}
-                width={"100%"}
-                className="md:block hidden"
-              >
-                <source src={vid2} type="video/mp4" />
-              </video>
-              <img
-                className="h-[100%] w-[100%] block md:hidden"
-                src={baannerImg3}
-                alt=""
-              />
+            <div className="relative md:h-[700px] h-[200px] w-[100%] ">
+              <div className="md:h-[700px] h-[200px] w-[100%]">
+                <video
+                  loop
+                  muted
+                  autoPlay={"autoplay"}
+                  ref={vidRef}
+                  width={"100%"}
+                  className="lg:block hidden "
+                >
+                  <source src={vid2} type="video/mp4" />
+                </video>
+                <img
+                  className="h-[100%] w-[100%] block lg:hidden"
+                  src={baannerImg3}
+                  alt=""
+                />
+              </div>
+              <div className="absolute   top-[35%] left-[35%] ">
+                <div className="w-full relative z-[11]">
+                  <h1 className="md:text-[40px] lg:text-[60px] text-[18px] font-extrabold  capitalize shado">
+                    fulfill your <span className="text-black">Dream</span>
+                  </h1>
+                  <button className="absolute md:top-[150px] top-[30px] md:left-[35%] left-[15%] nav-link md:py-2 py-1 md:px-4 px-2  capitalize font-semibold">
+                    Join Us!
+                  </button>
+                </div>
+              </div>
+              <div className="absolute bg-black w-full  h-full opacity-10 top-1 left-1"></div>
             </div>
           </SwiperSlide>
         </Swiper>
