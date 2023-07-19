@@ -29,25 +29,25 @@ const Navber = () => {
 
   //nav Options
   const navOptions = (
-    <div className="flex items-center md:gap-4 gap-2 cursor-pointer">
-      <li className="nav-link py-2 md:px-6 px-2">
+    <div className="flex items-center md:gap-4 gap-2 cursor-pointer ">
+      <li className="nav-links py-2 md:px-6 px-2">
         <Link to="/">Home</Link>
       </li>
-      <li className="nav-link py-2 md:px-6 px-2">
+      <li className="nav-links py-2 md:px-6 px-2">
         <Link to="/about">About</Link>
       </li>
-      <li className="nav-link py-2 md:px-6 px-2">
+      <li className="nav-links py-2 md:px-6 px-2">
         <Link to="/contactUs">Contact Us</Link>
       </li>
-      <li className="nav-link py-2 md:px-6 px-2">
+      <li className="nav-links py-2 md:px-6 px-2">
         <Link to="/career">Careers</Link>
       </li>
 
-      {user && (
+      {cart.length > 0 && (
         <li className=" py-2 md:px-6 px-2 hidden md:block">
           <Link to="/selected">
             <button className="rounded-full relative">
-              <div className="nav-link p-2 indicator">
+              <div className=" p-2 indicator">
                 <FaShoppingCart />
                 <div className="badge bg-black text-white absolute -top-2 -right-6">
                   +{cart?.length || 0}
@@ -86,19 +86,19 @@ const Navber = () => {
 
               <ul
                 tabIndex={0}
-                className="menu menu-sm py-8 px-4  dropdown-content md:w-[300px] w-auto flex flex-col gap-3 mt-3 z-[10] bg-neumor text-center v"
+                className="menu menu-sm py-8 px-4  dropdown-content md:w-[300px] w-auto flex flex-col gap-3 mt-3 z-[10] bg-neumor text-center text-black "
               >
                 <div className="md:hidden block">{navOptions}</div>
                 <h4 className="font-semibold bg-black text-white rounded-md py-1 px-2">
                   Categories
                 </h4>
                 <li onClick={() => setMen(!men)}>
-                  <span className="nav-link  p-2 hover:bg-[#f0f8ff]">
+                  <span className="nav-link  p-2 ">
                     Men
                     {!men ? <FaAngleDown /> : <FaAngleRight />}
                   </span>
                   {!men ? (
-                    <ul className="flex  flex-col gap-4 rounded-md py-4 px-4 text-left">
+                    <ul className="flex  flex-col gap-4 rounded-md py-4 px-4 text-left ">
                       <li className="nav-link p-2">Pant</li>
                       <li className="nav-link p-2">Shirt</li>
                       <li className="nav-link p-2">T-Shirt</li>
@@ -112,7 +112,7 @@ const Navber = () => {
                 <li className="relative">
                   <span
                     onClick={() => setWomen(!women)}
-                    className=" nav-link p-2  hover:bg-[#f0f8ff]"
+                    className=" nav-link p-2 "
                   >
                     <span>Women</span>
                     <span>{!women ? <FaAngleDown /> : <FaAngleRight />}</span>
@@ -131,10 +131,7 @@ const Navber = () => {
                   )}
                 </li>
                 <li className=" relative">
-                  <span
-                    onClick={() => setKids(!kids)}
-                    className="nav-link p-2 hover:bg-[#f0f8ff]"
-                  >
+                  <span onClick={() => setKids(!kids)} className="nav-link p-2">
                     <span>Kids</span>
                     <span>{!kids ? <FaAngleDown /> : <FaAngleRight />}</span>
                   </span>
@@ -152,7 +149,7 @@ const Navber = () => {
                   )}
                 </li>
                 <li onClick={() => setCouple(!couple)}>
-                  <span className="nav-link p-2  hover:bg-[#f0f8ff]">
+                  <span className="nav-link p-2  ">
                     <span>Couples</span>
                     <span>{!couple ? <FaAngleDown /> : <FaAngleRight />}</span>
                   </span>
@@ -184,10 +181,10 @@ const Navber = () => {
                   <input
                     type="text"
                     placeholder="Search…"
-                    className="ps-4 md:w-[340px] w-[150px] "
+                    className="ps-4 md:w-[340px] w-[150px] bg-[#f3f5f8]"
                   />
 
-                  <button className="btn btn-square bg-neumor">
+                  <button className="btn btn-square bg-black text-white hover:bg-black hover:text-white">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6"
@@ -243,7 +240,7 @@ const Navber = () => {
             )}
 
             <div
-              className={`absolute z-50 right-[20px] lg:right-[40px] top-[110px] lg:top-[110px] transform py-4 px-6 just-neumor text-black font-semibold  rounded-[10px] w-[200px]  ${
+              className={`absolute z-50 right-[20px] lg:right-[40px] top-[110px] lg:top-[110px] transform py-4 px-6 text-black font-semibold  rounded-[10px] w-[200px] bg-white  ${
                 !handleProfile ? "block" : "hidden"
               } ${user ? "block" : "hidden"}`}
             >
@@ -265,13 +262,11 @@ const Navber = () => {
                     <Link to={"/dashboard/users"}>Dashboard</Link>
                   </li>
                 )} */}
-                  <li className="nav-link py-2 md:px-6 px-2">Profile</li>
-                  <li className=" nav-link py-2 md:px-6 px-2 mt-2">
-                    Dashboard
-                  </li>
+                  <li className="nav-link py-2 px-2 mt-2">Profile</li>
+                  <li className=" nav-link py-2  px-2 mt-2">Dashboard</li>
                   <li
                     onClick={handleLogOut}
-                    className="cursor-pointer mt-2 nav-link py-2 md:px-6 px-2"
+                    className=" cursor-pointer mt-2 nav-link py-2  px-2"
                   >
                     LogOut
                   </li>

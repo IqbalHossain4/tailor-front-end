@@ -5,6 +5,9 @@ import Buyer from "../Pages/joinUs/Buyer";
 import Login from "../Pages/SignIn/Login";
 import Home from "../Pages/Home";
 import SelectedItems from "../Components/SelectedItems/SelectedItems";
+import PriveteRoute from "../PriveteRoutes/PriveteRoute";
+import ViewProduct from "../Components/ViewProduct/ViewProduct";
+
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -28,7 +31,17 @@ const routes = createBrowserRouter([
       },
       {
         path: "selected",
-        element: <SelectedItems />,
+        element: (
+          <PriveteRoute>
+            <SelectedItems />
+          </PriveteRoute>
+        ),
+      },
+      {
+        path: "product/:id",
+        element: <ViewProduct />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
       },
     ],
   },

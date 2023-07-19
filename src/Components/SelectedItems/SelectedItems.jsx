@@ -66,7 +66,7 @@ const SelectedItems = () => {
     <div className="font-serif">
       <div className="containerr">
         <SubHeader title={"Shopping Cart"} subTitle={"Choose Your Favorite"} />
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mb-40">
           <table className="table">
             <tbody>
               {cart.map((items) => (
@@ -95,7 +95,7 @@ const SelectedItems = () => {
                     >
                       -
                     </button>
-                    <p className="text-center border w-32 px-2 py-3 mx-2">
+                    <p className="text-center border w-32 px-2 py-3 mx-2 bg-[#f3f5f8] rounded-sm">
                       {items.quantity >= 1 ? items.quantity : 1}
                     </p>
                     <button

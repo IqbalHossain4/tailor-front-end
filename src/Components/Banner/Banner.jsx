@@ -40,7 +40,7 @@ const Banner = () => {
                   <h1 className="md:text-[40px] lg:text-[60px] text-[18px] font-extrabold  capitalize shado">
                     Find your <span className="text-black">choice</span>
                   </h1>
-                  <button className="absolute md:top-[150px] top-[30px] md:left-[35%] left-[15%] nav-link md:py-2 py-1 md:px-4 px-2  capitalize font-semibold ">
+                  <button className="absolute md:top-[150px] top-[30px] md:left-[35%] left-[15%] btnInfo md:py-2 py-1 md:px-4 px-2  capitalize font-semibold ">
                     Shop Now!
                   </button>
                 </div>
@@ -56,7 +56,7 @@ const Banner = () => {
                   <h1 className="md:text-[40px] lg:text-[60px] text-[18px] font-extrabold  capitalize shado">
                     Show your <span className="text-black">creativity</span>
                   </h1>
-                  <button className="absolute md:top-[150px] top-[30px] md:left-[35%] left-[15%] nav-link md:py-2 py-1 md:px-4 px-2  capitalize font-semibold">
+                  <button className="absolute md:top-[150px] top-[30px] md:left-[35%] left-[15%] btnInfo md:py-2 py-1 md:px-4 px-2  capitalize font-semibold">
                     Join Us!
                   </button>
                 </div>
@@ -88,7 +88,7 @@ const Banner = () => {
                   <h1 className="md:text-[40px] lg:text-[60px] text-[18px] font-extrabold  capitalize shado">
                     fulfill your <span className="text-black">Dream</span>
                   </h1>
-                  <button className="absolute md:top-[150px] top-[30px] md:left-[35%] left-[15%] nav-link md:py-2 py-1 md:px-4 px-2  capitalize font-semibold">
+                  <button className="absolute md:top-[150px] top-[30px] md:left-[35%] left-[15%] btnInfo md:py-2 py-1 md:px-4 px-2  capitalize font-semibold ">
                     Join Us!
                   </button>
                 </div>

@@ -6,7 +6,7 @@ const ExtraNav = () => {
   const { user } = useContext(AuthContext);
   const [controlUser, setControlUser] = useState(true);
   return (
-    <div className="bg-[#d1d8ec]">
+    <div className="bg-[#f3f5f8]">
       <div className="containers h-[40px] flex items-center justify-between font-serif">
         <div>
           <Link to="/">

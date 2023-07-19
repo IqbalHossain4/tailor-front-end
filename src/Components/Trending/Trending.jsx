@@ -1,8 +1,10 @@
 import { Rating } from "@smastrom/react-rating";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
 import useCarts from "../../Hooks/useCarts";
+import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 const Trending = ({ product }) => {
   const {
     _id,
@@ -22,60 +24,62 @@ const Trending = ({ product }) => {
 
   //add to chart
   const addTocharts = () => {
-    const selectedItems = {
-      email: user.email,
-      itemsId: _id,
-      name: name,
-      price: price,
-      photoOne: photoOne,
-      quantity: parseInt(1),
-      category: category,
-    };
-    const existingItemIndex = cart.findIndex(
-      (item) => item.itemsId === selectedItems.itemsId
-    );
+    if (user) {
+      const selectedItems = {
+        email: user.email,
+        itemsId: _id,
+        name: name,
+        price: price,
+        photoOne: photoOne,
+        quantity: parseInt(1),
+        category: category,
+      };
+      const existingItemIndex = cart.findIndex(
+        (item) => item.itemsId === selectedItems.itemsId
+      );
 
-    if (existingItemIndex !== -1) {
-      const updatedCartItems = [...cartItems];
-      updatedCartItems[existingItemIndex];
-      setCartItems(updatedCartItems);
-      Swal.fire({
-        position: "center",
-        icon: "info",
-        title: "This product already added",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } else {
-      const newItem = { ...selectedItems };
-      setCartItems([...cartItems, newItem]);
-      fetch("http://localhost:5000/carts", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(selectedItems),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.insertedId) {
-            refetch();
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Successfully saved on the Cart",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
+      if (existingItemIndex !== -1) {
+        const updatedCartItems = [...cartItems];
+        updatedCartItems[existingItemIndex];
+        setCartItems(updatedCartItems);
+        Swal.fire({
+          position: "center",
+          icon: "info",
+          title: "This product already added",
+          showConfirmButton: false,
+          timer: 1500,
         });
+      } else {
+        const newItem = { ...selectedItems };
+        setCartItems([...cartItems, newItem]);
+        fetch("http://localhost:5000/carts", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(selectedItems),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              refetch();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Successfully saved on the Cart",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
+      }
     }
   };
 
   return (
     <div className="font-serif">
       <div className="rounded chart">
-        <div className="w-[350px] h-[350px] w mx-auto lg:p-10 md:p-6 p-4 bg-[#f0f8ff] rounded">
+        <div className="w-[350px] h-[350px] w mx-auto lg:p-10 md:p-6 p-4 bg-[#F7F8FC] rounded">
           <img
             className="rounded w-full h-full"
             src={showImg ? showImg : photoOne}
@@ -89,7 +93,9 @@ const Trending = ({ product }) => {
             <span className="flex justify-center">
               <Rating readOnly value={rating} style={{ maxWidth: 60 }} />
             </span>
-            <p className="mt-2 text-sm">{name}</p>
+            <p className="mt-2 text-sm cursor-pointer hover:text-[#007bff]">
+              <Link to={`/product/${_id}`}>{name}</Link>
+            </p>
             <h4 className="font-semibold text-lg">${price}</h4>
           </div>
 
@@ -106,7 +112,7 @@ const Trending = ({ product }) => {
               onClick={() => setShowImg(photoTwo)}
               className={`w-[40px] h-[35px] ${
                 showImg == photoTwo ? "border" : "border-none"
-              } rounded-md border-2 border-[#007bff] cursor-pointer`}
+              } rounded-md border-2 border-[#2879fe] cursor-pointer`}
               src={photoTwo}
               alt=""
             />
@@ -121,12 +127,18 @@ const Trending = ({ product }) => {
           </div>
           {/* add chart */}
           <div className="text-center ">
-            <button
-              onClick={() => addTocharts()}
-              className="py-2 px-4 nav-link"
-            >
-              Add To Chart
-            </button>
+            {user ? (
+              <button onClick={() => addTocharts()} className="py-2 px-4 btns">
+                <FaShoppingCart className="inline-block mr-1" /> Add To Chart
+              </button>
+            ) : (
+              <button className="py-2 px-4 btns">
+                <Link to="/signIn">
+                  <FaShoppingCart className="inline-block mr-1" />
+                  Add To Chart
+                </Link>
+              </button>
+            )}
           </div>
         </div>
       </div>

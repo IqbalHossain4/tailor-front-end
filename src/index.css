@@ -3,6 +3,16 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Roboto+Condensed:ital,wght@0,300;0,400;1,300;1,400&family=Roboto+Mono:ital,wght@0,100;0,200;1,100;1,200;1,300&display=swap");
 
+/* colors 
+main Bg: white;
+sub Bg : bg-[#f3f5f8]
+Item Bg: bg-[#F7F8FC]
+btn bg: bg-[#2879fe]
+mainText :black
+hoverText: white
+
+*/
+
 :root {
   font-family: "Nunito Sans", sans-serif;
   font-family: "Poppins", sans-serif;
@@ -20,50 +30,66 @@ body {
 }
 
 .nav-link {
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
-  background: #d1d8ec;
-  /* -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff; */
-  box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+  border-radius: 5px;
+  background: white;
   transition: all 0.4s;
 }
 
 .nav-link:hover {
-  background: #f0f8ff;
+  color: #2879fe;
+  border: 1px solid #b1aaaa;
+}
+
+.nav-links {
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  background: white;
+  transition: all 0.4s;
+}
+
+.nav-links:hover {
+  color: #2879fe;
 }
 
 .hoverBtn {
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
-  background: #d1d8ec;
-  -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-  box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+  border-radius: 5px;
+  background: white;
   transition: all 0.4s;
 }
 
 .btnHover:hover .hoverBtn {
-  background: #f0f8ff;
+  background: #2879fe;
+  color: white;
 }
 
 .bg-neumor {
   -webkit-border-radius: 50px;
   border-radius: 50px;
-  background: #d1d8ec;
-  -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-  box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+  background: white;
 }
 
-.just-neumor {
-  background: #d1d8ec;
-  -webkit-box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
-  box-shadow: 12px 12px 24px #b2b8c9, -12px -12px 24px #f0f8ff;
+.btns {
+  width: 200px;
+  border-radius: 5px;
+  color: white;
+  margin: 0 auto;
+  background-color: #2879fe;
+  transition: all 0.4s;
 }
 
-.bg-inner {
-  background: #e0e0e0;
-  box-shadow: inset 29px 29px 65px #aaaaaa, inset -29px -29px 65px #ffffff;
+.btns:hover {
+  background: #2267d8;
 }
-
+.btnInfo {
+  background: white;
+  border-radius: 5px;
+  color: black;
+  transition: all 0.4s;
+}
+.btnInfo:hover {
+  background: #2879fe;
+  color: white;
+}
 *,
 *::before,
 *::after {
