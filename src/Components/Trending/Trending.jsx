@@ -1,7 +1,8 @@
 import { Rating } from "@smastrom/react-rating";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
+import useCarts from "../../Hooks/useCarts";
 const Trending = ({ product }) => {
   const {
     _id,
@@ -16,39 +17,61 @@ const Trending = ({ product }) => {
   } = product;
   const { user } = useContext(AuthContext);
   const [showImg, setShowImg] = useState(null);
+  const [cart, refetch] = useCarts();
+  const [cartItems, setCartItems] = useState([]);
+
   //add to chart
-  const items = {
-    email: user.email,
-    itemsId: _id,
-    name: name,
-    price: price,
-    photoOne: photoOne,
-  };
-  const addTochart = () => {
-    fetch("http://localhost:5000/carts", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(items),
-    })
-      .then((data) => {
-        console.log("hello out");
-        if (data.insertedId) {
-          console.log("hello in");
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
+  const addTocharts = () => {
+    const selectedItems = {
+      email: user.email,
+      itemsId: _id,
+      name: name,
+      price: price,
+      photoOne: photoOne,
+      quantity: parseInt(1),
+      category: category,
+    };
+    const existingItemIndex = cart.findIndex(
+      (item) => item.itemsId === selectedItems.itemsId
+    );
+
+    if (existingItemIndex !== -1) {
+      const updatedCartItems = [...cartItems];
+      updatedCartItems[existingItemIndex];
+      setCartItems(updatedCartItems);
+      Swal.fire({
+        position: "center",
+        icon: "info",
+        title: "This product already added",
+        showConfirmButton: false,
+        timer: 1500,
       });
+    } else {
+      const newItem = { ...selectedItems };
+      setCartItems([...cartItems, newItem]);
+      fetch("http://localhost:5000/carts", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(selectedItems),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            refetch();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Successfully saved on the Cart",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    }
   };
+
   return (
     <div className="font-serif">
       <div className="rounded chart">
@@ -98,7 +121,10 @@ const Trending = ({ product }) => {
           </div>
           {/* add chart */}
           <div className="text-center ">
-            <button onClick={addTochart} className="py-2 px-4 nav-link">
+            <button
+              onClick={() => addTocharts()}
+              className="py-2 px-4 nav-link"
+            >
               Add To Chart
             </button>
           </div>

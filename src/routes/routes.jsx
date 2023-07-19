@@ -4,6 +4,7 @@ import Saller from "../Pages/joinUs/Saller";
 import Buyer from "../Pages/joinUs/Buyer";
 import Login from "../Pages/SignIn/Login";
 import Home from "../Pages/Home";
+import SelectedItems from "../Components/SelectedItems/SelectedItems";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +25,10 @@ const routes = createBrowserRouter([
       {
         path: "signIn",
         element: <Login />,
+      },
+      {
+        path: "selected",
+        element: <SelectedItems />,
       },
     ],
   },

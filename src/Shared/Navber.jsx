@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
+import useCarts from "../Hooks/useCarts";
 const Navber = () => {
   const [men, setMen] = useState(true);
   const [women, setWomen] = useState(true);
@@ -14,6 +15,8 @@ const Navber = () => {
   const [couple, setCouple] = useState(true);
   const [srcBtn, setSrcBtn] = useState(true);
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCarts();
+  const [handleProfile, setHandleProfile] = useState(true);
 
   //logout user
   const handleLogOut = () => {
@@ -23,10 +26,6 @@ const Navber = () => {
         console.log(error);
       });
   };
-
-  //handle profile
-
-  const [handleProfile, setHandleProfile] = useState(true);
 
   //nav Options
   const navOptions = (
@@ -46,14 +45,16 @@ const Navber = () => {
 
       {user && (
         <li className=" py-2 md:px-6 px-2 hidden md:block">
-          <button className="rounded-full relative">
-            <div className="nav-link p-2 indicator">
-              <FaShoppingCart />
-              <div className="badge bg-[#007bff] text-white absolute top-0 -right-6">
-                0
+          <Link to="/selected">
+            <button className="rounded-full relative">
+              <div className="nav-link p-2 indicator">
+                <FaShoppingCart />
+                <div className="badge bg-black text-white absolute -top-2 -right-6">
+                  +{cart?.length || 0}
+                </div>
               </div>
-            </div>
-          </button>
+            </button>
+          </Link>
         </li>
       )}
     </div>
