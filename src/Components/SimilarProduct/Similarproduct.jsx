@@ -12,7 +12,6 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 const Similarproduct = () => {
-  const [showImg, setShowImg] = useState(null);
   const [similarProduct, setSimilarProduct] = useState([]);
   const [setSwiperRef] = useState(null);
   const [cartItems, setCartItems] = useState([]);
@@ -45,7 +44,7 @@ const Similarproduct = () => {
             category: items.category,
           })
       );
-      console.log(selectedItems);
+
       const existingItemIndex = cart.findIndex(
         (item) => item.itemsId === selectedItems.itemsId
       );
@@ -104,11 +103,11 @@ const Similarproduct = () => {
           {similarProduct.map((item) => (
             <SwiperSlide key={item._id}>
               <div className="font-serif">
-                <div className="rounded chart">
+                <div className="rounded ">
                   <div className="w-[350px] h-[350px] mx-auto  lg:p-8 md:p-6 p-4 bg-[#F7F8FC] rounded ">
                     <img
-                      className="rounded w-full h-full"
-                      src={showImg ? showImg : item.photoOne}
+                      className="rounded w-full h-full object-scale-down"
+                      src={item.photoOne}
                       alt=""
                     />
                   </div>
@@ -129,42 +128,8 @@ const Similarproduct = () => {
                       <h4 className="font-semibold text-lg">${item.price}</h4>
                     </div>
 
-                    <div className="flex justify-center gap-4 mx-auto mt-3 mb-6">
-                      <div className="w-[40px] h-[40px]">
-                        <img
-                          onClick={() => setShowImg(item.photoOne)}
-                          className={`w-full h-full ${
-                            showImg == item.photoOne ? "border" : "border-none"
-                          } rounded-md border-2 border-[#007bff] cursor-pointer`}
-                          src={item.photoOne}
-                          alt=""
-                        />
-                      </div>
-                      <div className="w-[40px] h-[40px]">
-                        <img
-                          onClick={() => setShowImg(item.photoTwo)}
-                          className={`w-full h-full ${
-                            showImg == item.photoTwo ? "border" : "border-none"
-                          } rounded-md border-2 border-[#007bff] cursor-pointer`}
-                          src={item.photoTwo}
-                          alt=""
-                        />
-                      </div>
-                      <div className="w-[40px] h-[40px]">
-                        <img
-                          onClick={() => setShowImg(item.photoThree)}
-                          className={`w-full h-full ${
-                            showImg == item.photoThree
-                              ? "border"
-                              : "border-none"
-                          } rounded-md border-2 border-[#007bff] cursor-pointer`}
-                          src={item.photoThree}
-                          alt=""
-                        />
-                      </div>
-                    </div>
                     {/* add chart */}
-                    <div className="text-center btns">
+                    <div className="text-center mt-4 ">
                       {user ? (
                         <button
                           onClick={() => addTocharts()}

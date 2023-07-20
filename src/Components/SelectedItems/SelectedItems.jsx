@@ -76,6 +76,7 @@ const SelectedItems = () => {
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
                           <img
+                            className="object-scale-down"
                             src={items.photoOne}
                             alt="Avatar Tailwind CSS Component"
                           />

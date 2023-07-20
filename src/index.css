@@ -227,3 +227,10 @@ body {
     height: auto;
   }
 }
+
+#imageZoom {
+  width: 500px;
+  height: 600px;
+  object-fit: scale-down;
+  /* object-fit: contain; */
+}

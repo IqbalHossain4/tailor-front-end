@@ -5,12 +5,25 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
 import useCarts from "../../Hooks/useCarts";
+import ReactImageMagnify from "react-image-magnify";
+
 const ViewProduct = () => {
   const productData = useLoaderData();
   const { user } = useContext(AuthContext);
   const [showImg, setShowImg] = useState(null);
   const [cart, refetch] = useCarts();
   const [cartItems, setCartItems] = useState([]);
+  const [quantities, setQuantities] = useState(1);
+  const [filterHandler, setFilterHandler] = useState(null);
+
+  //increament
+  let increment = () => {
+    setQuantities(quantities + 1);
+  };
+  //decreament
+  let decreament = () => {
+    setQuantities(quantities - 1);
+  };
 
   //add to chart
   const addTocharts = () => {
@@ -21,7 +34,7 @@ const ViewProduct = () => {
         name: productData.name,
         price: productData.price,
         photoOne: productData.photoOne,
-        quantity: parseInt(1),
+        quantity: quantities,
         category: productData.category,
       };
       const existingItemIndex = cart.findIndex(
@@ -65,67 +78,56 @@ const ViewProduct = () => {
       }
     }
   };
-  //increament
-  const increaseQuantity = (id) => {
-    const updatedId = cart.find((items) => items._id === id);
-    fetch(`http://localhost:5000/increase/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ quantity: updatedId.quantity }),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        refetch();
-      });
-  };
-  //decreament
-  const decreaseQuantity = (id) => {
-    const updatedId = cart.find((items) => items._id === id);
-
-    fetch(`http://localhost:5000/decrease/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ quantity: updatedId.quantity }),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        refetch();
-      });
-  };
 
   return (
     <div>
-      <div className="bg-[#f3f5f8] font-serif">
+      <div className="bg-[#f3f5f8] font-serif ">
         <p className="text-xs containers text-gray-400 bg-[#f3f5f8] tracking-widest">
           Home/{productData.name}
         </p>
       </div>
-      <div className="containerr flex items-start">
+      <div className="containerr md:flex md:items-start md:justify-center  gap-12 py-8">
         {/* imaage section */}
-        <div className="max-h-[100px]">
-          <img
-            style={{ maxHeight: "500px" }}
-            className="w-full  h-full"
-            src={productData.photoOne}
-            alt=""
+        <div id="imageZoom" className="lg:p-10 md:p-6 p-4 bg-[#F7F8FC] rounded">
+          {/* <img
+            style={{ maxHeight: "400px" }}
+            className="w-full h-full object-scale-down"
+            src={showImg ? showImg : productData.photoOne}
+            alt="productImage"
+          /> */}
+
+          <ReactImageMagnify
+            className="w-full h-full"
+            {...{
+              smallImage: {
+                alt: "Wristwatch by Ted Baker London",
+                isFluidWidth: true,
+                src: showImg ? showImg : productData.photoOne,
+              },
+              largeImage: {
+                src: showImg ? showImg : productData.photoOne,
+                width: 1200,
+                height: 700,
+              },
+            }}
           />
         </div>
         {/* text section */}
-        <div>
+        <div className="">
           <div>
-            <h2>{productData.name}</h2>
-            <h3>${productData.price}</h3>
-            <span className="flex">
+            <h2 className="text-2xl font-extrabold">{productData.name}</h2>
+            <h3 className="mt-1 mb-6 text-[#2879fe] text-2xl font-extrabold">
+              ${productData.price}
+            </h3>
+            <span className="flex mb-6">
               <Rating
                 readOnly
                 value={productData.rating}
-                style={{ maxWidth: 60 }}
+                style={{ maxWidth: 80 }}
               />
-              <span className="text-xs ms-2 ">{productData.rating}</span>
+              <span className="text-xs ms-2 text-[#2879fe]">
+                {productData.rating}
+              </span>
             </span>
           </div>
           {/* add chart */}
@@ -133,16 +135,16 @@ const ViewProduct = () => {
             <div className="flex items-center">
               <button
                 className="font-extrabold text-2xl"
-                onClick={() => decreaseQuantity(productData._id)}
+                onClick={() => decreament()}
               >
                 -
               </button>
               <p className="text-center border w-32 px-2 py-3 mx-2 bg-[#f3f5f8] rounded-sm">
-                {productData.quantity >= 1 ? productData.quantity : 1}
+                {quantities >= 1 ? quantities : 1}
               </p>
               <button
                 className="font-extrabold text-2xl"
-                onClick={() => increaseQuantity(productData._id)}
+                onClick={() => increment()}
               >
                 +
               </button>
@@ -152,7 +154,53 @@ const ViewProduct = () => {
               <FaShoppingCart className="inline-block mr-1" /> Add To Chart
             </button>
           </div>
-          <div></div>
+          <div className="my-2">
+            <div className="flex items-center gap-4 mx-auto mt-3 mb-6">
+              <img
+                onClick={() => setShowImg(productData.photoOne)}
+                className={`w-[40px] h-[35px] object-scale-down ${
+                  showImg == productData.photoOne ? "border" : "border-none"
+                } rounded-md border-2 border-[#007bff] cursor-pointer`}
+                src={productData.photoOne}
+                alt=""
+              />
+              <img
+                onClick={() => setShowImg(productData.photoTwo)}
+                className={`w-[40px] h-[35px] object-scale-down ${
+                  showImg == productData.photoTwo ? "border" : "border-none"
+                } rounded-md border-2 border-[#007bff] cursor-pointer`}
+                src={productData.photoTwo}
+                alt=""
+              />
+              <img
+                onClick={() => setShowImg(productData.photoThree)}
+                className={`w-[40px] h-[35px] object-scale-down ${
+                  showImg == productData.photoThree ? "border" : "border-none"
+                } rounded-md border-2 border-[#007bff] cursor-pointer`}
+                src={productData.photoThree}
+                alt=""
+              />
+            </div>
+            <span className="text-xs flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="name"
+                onClick={(e) => setFilterHandler(e.target.checked)}
+              />
+              <span>I agree with the terms and conditions</span>
+            </span>
+            <br />
+            <button
+              className={`w-full py-4 bg-black text-white text-lg rounded-md my-2  ${
+                filterHandler == true
+                  ? "transition-all duration-500 hover:bg-white hover:text-black hover:border cursor-pointer"
+                  : "disabled cursor-not-allowed"
+              }`}
+            >
+              {" "}
+              Buy Now
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -79,9 +79,9 @@ const BestProduct = ({ product }) => {
   return (
     <div className="font-serif">
       <div className="rounded chart">
-        <div className="w-[350px] h-[350px] w mx-auto lg:p-10 md:p-6 p-4 bg-[#F7F8FC] rounded">
+        <div className="w-[350px] h-[350px]  mx-auto lg:p-10 md:p-6 p-4 bg-[#F7F8FC] rounded">
           <img
-            className="rounded w-full h-full"
+            className="rounded w-full h-full object-scale-down"
             src={showImg ? showImg : photoOne}
             alt=""
           />
@@ -102,7 +102,7 @@ const BestProduct = ({ product }) => {
           <div className="flex justify-center gap-4 mx-auto mt-3 mb-6">
             <img
               onClick={() => setShowImg(photoOne)}
-              className={`w-[40px] h-[35px] ${
+              className={`w-[40px] h-[35px] object-scale-down ${
                 showImg == photoOne ? "border" : "border-none"
               } rounded-md border-2 border-[#007bff] cursor-pointer`}
               src={photoOne}
@@ -110,7 +110,7 @@ const BestProduct = ({ product }) => {
             />
             <img
               onClick={() => setShowImg(photoTwo)}
-              className={`w-[40px] h-[35px] ${
+              className={`w-[40px] h-[35px] object-scale-down ${
                 showImg == photoTwo ? "border" : "border-none"
               } rounded-md border-2 border-[#007bff] cursor-pointer`}
               src={photoTwo}
@@ -118,7 +118,7 @@ const BestProduct = ({ product }) => {
             />
             <img
               onClick={() => setShowImg(photoThree)}
-              className={`w-[40px] h-[35px] ${
+              className={`w-[40px] h-[35px] object-scale-down ${
                 showImg == photoThree ? "border" : "border-none"
               } rounded-md border-2 border-[#007bff] cursor-pointer`}
               src={photoThree}
