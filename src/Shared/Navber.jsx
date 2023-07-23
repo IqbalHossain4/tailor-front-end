@@ -262,8 +262,12 @@ const Navber = () => {
                     <Link to={"/dashboard/users"}>Dashboard</Link>
                   </li>
                 )} */}
-                  <li className="nav-link py-2 px-2 mt-2">Profile</li>
-                  <li className=" nav-link py-2  px-2 mt-2">Dashboard</li>
+                  <li className="nav-link py-2 px-2 mt-2 cursor-pointer">
+                    Profile
+                  </li>
+                  <li className=" nav-link py-2  px-2 mt-2 cursor-pointer">
+                    Dashboard
+                  </li>
                   <li
                     onClick={handleLogOut}
                     className=" cursor-pointer mt-2 nav-link py-2  px-2"

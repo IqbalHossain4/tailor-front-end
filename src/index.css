@@ -217,6 +217,15 @@ body {
   transform: translateY(-50px);
 }
 
+#imageZoom {
+  width: fit-content;
+  height: 100%;
+  box-sizing: border-box;
+  object-fit: scale-down;
+}
+
+/* Responsive */
+
 @media only screen and (max-width: 600px) {
   .chart {
     height: auto;
@@ -228,9 +237,9 @@ body {
   }
 }
 
-#imageZoom {
-  width: 500px;
-  height: 600px;
-  object-fit: scale-down;
-  /* object-fit: contain; */
+@media only screen and (max-width: 600px) {
+  #imageZoom {
+    width: fit-content;
+    height: fit-content;
+  }
 }

@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import { FaShoppingCart } from "react-icons/fa";
 const BestProduct = ({ product }) => {
   const { user } = useContext(AuthContext);
-  const [showImg, setShowImg] = useState(null);
+  const [showImg, setShowImg] = useState(product.photoOne);
   const [cart, refetch] = useCarts();
   const [cartItems, setCartItems] = useState([]);
   const {

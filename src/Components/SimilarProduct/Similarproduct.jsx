@@ -103,12 +103,12 @@ const Similarproduct = () => {
           {similarProduct.map((item) => (
             <SwiperSlide key={item._id}>
               <div className="font-serif">
-                <div className="rounded ">
-                  <div className="w-[350px] h-[350px] mx-auto  lg:p-8 md:p-6 p-4 bg-[#F7F8FC] rounded ">
+                <div className="rounded">
+                  <div className="lg:w-[350px] lg:h-[350px] w-fit h-fit mx-auto  lg:p-8 md:p-6 p-4 bg-[#F7F8FC] rounded ">
                     <img
                       className="rounded w-full h-full object-scale-down"
                       src={item.photoOne}
-                      alt=""
+                      alt="productImage"
                     />
                   </div>
 

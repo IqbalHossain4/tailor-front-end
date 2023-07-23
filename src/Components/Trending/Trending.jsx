@@ -6,6 +6,11 @@ import useCarts from "../../Hooks/useCarts";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 const Trending = ({ product }) => {
+  const { user } = useContext(AuthContext);
+  const [showImg, setShowImg] = useState(product.photoOne);
+  const [cart, refetch] = useCarts();
+  const [cartItems, setCartItems] = useState([]);
+
   const {
     _id,
     name,
@@ -17,11 +22,6 @@ const Trending = ({ product }) => {
     productName,
     rating,
   } = product;
-  const { user } = useContext(AuthContext);
-  const [showImg, setShowImg] = useState(null);
-  const [cart, refetch] = useCarts();
-  const [cartItems, setCartItems] = useState([]);
-
   //add to chart
   const addTocharts = () => {
     if (user) {
