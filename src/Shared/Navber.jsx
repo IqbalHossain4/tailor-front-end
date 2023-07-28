@@ -34,13 +34,17 @@ const Navber = () => {
         <Link to="/">Home</Link>
       </li>
       <li className="nav-links py-2 md:px-6 px-2">
-        <Link to="/about">About</Link>
+        <Link to="/men">Men</Link>
       </li>
       <li className="nav-links py-2 md:px-6 px-2">
-        <Link to="/contactUs">Contact Us</Link>
+        <Link to="/kids">Kids</Link>
       </li>
       <li className="nav-links py-2 md:px-6 px-2">
-        <Link to="/career">Careers</Link>
+        <Link to="/women">Women</Link>
+      </li>
+
+      <li className="nav-links py-2 md:px-6 px-2">
+        <Link to="/kids">Couples</Link>
       </li>
 
       {cart.length > 0 && (
@@ -59,6 +63,9 @@ const Navber = () => {
       )}
     </div>
   );
+
+  // dashboard
+  let isTailor = true;
 
   return (
     <div className="font-serif">
@@ -109,6 +116,24 @@ const Navber = () => {
                     ""
                   )}
                 </li>
+                <li className=" relative">
+                  <span onClick={() => setKids(!kids)} className="nav-link p-2">
+                    <span>Kids</span>
+                    <span>{!kids ? <FaAngleDown /> : <FaAngleRight />}</span>
+                  </span>
+
+                  {!kids ? (
+                    <ul className="flex  flex-col gap-4 rounded-md py-4 px-4 text-left">
+                      <li className="nav-link p-2">Pant</li>
+                      <li className="nav-link p-2">Shirt</li>
+                      <li className="nav-link p-2 ">T-Shirt</li>
+                      <li className="nav-link p-2">Punjabi</li>
+                      <li className="nav-link p-2">Khelna</li>
+                    </ul>
+                  ) : (
+                    ""
+                  )}
+                </li>
                 <li className="relative">
                   <span
                     onClick={() => setWomen(!women)}
@@ -130,24 +155,7 @@ const Navber = () => {
                     ""
                   )}
                 </li>
-                <li className=" relative">
-                  <span onClick={() => setKids(!kids)} className="nav-link p-2">
-                    <span>Kids</span>
-                    <span>{!kids ? <FaAngleDown /> : <FaAngleRight />}</span>
-                  </span>
 
-                  {!kids ? (
-                    <ul className="flex  flex-col gap-4 rounded-md py-4 px-4 text-left">
-                      <li className="nav-link p-2">Pant</li>
-                      <li className="nav-link p-2">Shirt</li>
-                      <li className="nav-link p-2 ">T-Shirt</li>
-                      <li className="nav-link p-2">Punjabi</li>
-                      <li className="nav-link p-2">Khelna</li>
-                    </ul>
-                  ) : (
-                    ""
-                  )}
-                </li>
                 <li onClick={() => setCouple(!couple)}>
                   <span className="nav-link p-2  ">
                     <span>Couples</span>
@@ -246,13 +254,13 @@ const Navber = () => {
             >
               {user && (
                 <ul>
-                  {/* {isInstructor && (
-                  <li>
-                    <Link to={"/dashboard/addclass"}>Dashboard</Link>
-                  </li>
-                )}
+                  {/* {isTailor && (
+                    <li>
+                      <Link to={"/dashboard/tailor"}>Dashboard</Link>
+                    </li>
+                  )} */}
 
-                {isAdmin && (
+                  {/* {isAdmin && (
                   <li>
                     <Link to={"/dashboard/admin"}>Dashboard</Link>
                   </li>
@@ -263,11 +271,14 @@ const Navber = () => {
                   </li>
                 )} */}
                   <li className="nav-link py-2 px-2 mt-2 cursor-pointer">
-                    Profile
+                    <Link to="/userdashboard">Profile</Link>
                   </li>
-                  <li className=" nav-link py-2  px-2 mt-2 cursor-pointer">
-                    Dashboard
-                  </li>
+
+                  {isTailor && (
+                    <li className=" nav-link py-2  px-2 mt-2 cursor-pointer">
+                      <Link to={"/dashboard/tailor"}>Dashboard</Link>
+                    </li>
+                  )}
                   <li
                     onClick={handleLogOut}
                     className=" cursor-pointer mt-2 nav-link py-2  px-2"

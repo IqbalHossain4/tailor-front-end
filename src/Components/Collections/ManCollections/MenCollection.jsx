@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
-import { Rating, Star } from "@smastrom/react-rating";
-import "@smastrom/react-rating/style.css";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/AuthProvider";
-import useCarts from "../../Hooks/useCarts";
+import useCarts from "../../../Hooks/useCarts";
+import { AuthContext } from "../../../context/AuthProvider";
 import Swal from "sweetalert2";
 import { FaShoppingCart } from "react-icons/fa";
-const BestProduct = ({ product }) => {
+import { Rating, Star } from "@smastrom/react-rating";
+import { Link } from "react-router-dom";
+
+const MenCollection = ({ menData }) => {
   const { user } = useContext(AuthContext);
-  const [showImg, setShowImg] = useState(product.photoOne);
+  const [showImg, setShowImg] = useState(menData.photoOne);
   const [cart, refetch] = useCarts();
   const [cartItems, setCartItems] = useState([]);
   const {
@@ -21,7 +21,7 @@ const BestProduct = ({ product }) => {
     category,
     productName,
     rating,
-  } = product;
+  } = menData;
   //add to chart
 
   const addTocharts = () => {
@@ -77,7 +77,7 @@ const BestProduct = ({ product }) => {
     }
   };
   return (
-    <div className="font-serif">
+    <div>
       <div className="rounded chart">
         <div className="w-[280px] h-[350px]  mx-auto lg:p-4 md:p-2 p-2 bg-[#F7F8FC] rounded">
           <img
@@ -147,4 +147,4 @@ const BestProduct = ({ product }) => {
   );
 };
 
-export default BestProduct;
+export default MenCollection;

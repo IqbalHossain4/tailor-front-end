@@ -1,7 +1,7 @@
 import { Rating } from "@smastrom/react-rating";
 import React, { useContext, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
 import useCarts from "../../Hooks/useCarts";
@@ -160,9 +160,25 @@ const ViewProduct = () => {
               </button>
             </div>
 
-            <button onClick={() => addTocharts()} className="py-2 px-4 btns">
-              <FaShoppingCart className="inline-block mr-1" /> Add To Chart
-            </button>
+            {/* add chart */}
+            <div className="text-center ">
+              {user ? (
+                <button
+                  onClick={() => addTocharts()}
+                  className="py-2 px-4 btns"
+                >
+                  <FaShoppingCart className="inline-block mr-1" />
+                  Add To Chart
+                </button>
+              ) : (
+                <button className="py-2 px-4 btns">
+                  <Link to="/signIn">
+                    <FaShoppingCart className="inline-block mr-1" />
+                    Add To Chart
+                  </Link>
+                </button>
+              )}
+            </div>
           </div>
           <div className="my-2">
             <div className="flex items-center gap-4 mx-auto mt-3 mb-6">
@@ -201,7 +217,7 @@ const ViewProduct = () => {
             </span>
             <br />
             <button
-              className={`w-full py-4 bg-white text-black text-lg rounded-md my-2 border ${
+              className={`w-full py-2 bg-white text-black text-lg rounded-md my-2 border ${
                 filterHandler == true
                   ? "transition-all duration-500 hover:bg-[#007bff] hover:text-white hover:border cursor-pointer"
                   : "disabled cursor-not-allowed"

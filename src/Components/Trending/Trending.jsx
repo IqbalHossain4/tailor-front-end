@@ -79,7 +79,7 @@ const Trending = ({ product }) => {
   return (
     <div className="font-serif">
       <div className="rounded chart">
-        <div className="w-[350px] h-[350px] w mx-auto lg:p-10 md:p-6 p-4 bg-[#F7F8FC] rounded">
+        <div className="w-[280px] h-[350px]  mx-auto lg:p-4 md:p-2 p-2 bg-[#F7F8FC] rounded">
           <img
             className="rounded w-full h-full object-scale-down"
             src={showImg ? showImg : photoOne}

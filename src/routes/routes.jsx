@@ -7,6 +7,9 @@ import Home from "../Pages/Home";
 import SelectedItems from "../Components/SelectedItems/SelectedItems";
 import PriveteRoute from "../PriveteRoutes/PriveteRoute";
 import ViewProduct from "../Components/ViewProduct/ViewProduct";
+import ManCollections from "../Components/Collections/ManCollections/ManCollections";
+import UserDashboard from "../Pages/UserdDashboard/UserDashboard";
+import TailorDashboard from "../Pages/TailorDashboard/TailorDashboard";
 
 const routes = createBrowserRouter([
   {
@@ -43,7 +46,19 @@ const routes = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/product/${params.id}`),
       },
+      {
+        path: "men",
+        element: <ManCollections />,
+      },
+      {
+        path: "userdashboard",
+        element: <UserDashboard />,
+      },
     ],
+  },
+  {
+    path: "/dashboard/tailor",
+    element: <TailorDashboard />,
   },
 ]);
 

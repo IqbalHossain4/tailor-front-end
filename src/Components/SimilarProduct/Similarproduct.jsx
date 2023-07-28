@@ -104,7 +104,7 @@ const Similarproduct = () => {
             <SwiperSlide key={item._id}>
               <div className="font-serif">
                 <div className="rounded">
-                  <div className="lg:w-[350px] lg:h-[350px] w-fit h-fit mx-auto  lg:p-8 md:p-6 p-4 bg-[#F7F8FC] rounded ">
+                  <div className="lg:w-[280px] lg:h-[350px] w-fit h-fit mx-auto  lg:p-4 md:p-2 p-2 bg-[#F7F8FC] rounded ">
                     <img
                       className="rounded w-full h-full object-scale-down"
                       src={item.photoOne}

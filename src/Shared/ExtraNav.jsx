@@ -18,10 +18,10 @@ const ExtraNav = () => {
             {user ? (
               <span className="flex items-center">
                 <li className=" borders pe-2">
-                  <Link to="/career">Career</Link>
+                  <Link to="/career">About</Link>
                 </li>
                 <li className=" borders px-2">
-                  <Link to="/privacy">Privacy</Link>
+                  <Link to="/privacy">Contact Us</Link>
                 </li>
               </span>
             ) : (
