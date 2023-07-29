@@ -6,7 +6,9 @@ const PriveteRoute = ({ children }) => {
   const { user, loader } = useContext(AuthContext);
   const location = useLocation();
   if (loader) {
-    return <span className="loading loading-ring loading-lg"></span>;
+    return (
+      <span className="loading loading-ring loading-lg flex items-center justify-center "></span>
+    );
   }
   if (user) {
     return children;

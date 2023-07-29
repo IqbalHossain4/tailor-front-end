@@ -5,7 +5,7 @@ import {
   FaUserAlt,
   FaShoppingCart,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import useCarts from "../Hooks/useCarts";
 const Navber = () => {
@@ -17,7 +17,20 @@ const Navber = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCarts();
   const [handleProfile, setHandleProfile] = useState(true);
+  //make nav Active
 
+  const Active = ({ to, children }) => {
+    return (
+      <NavLink
+        to={to}
+        className={({ isActive }) =>
+          isActive ? "text-[#007bff]" : "text-black"
+        }
+      >
+        {children}
+      </NavLink>
+    );
+  };
   //logout user
   const handleLogOut = () => {
     logOut()
@@ -31,20 +44,20 @@ const Navber = () => {
   const navOptions = (
     <div className="flex items-center md:gap-4 gap-2 cursor-pointer ">
       <li className="nav-links py-2 md:px-6 px-2">
-        <Link to="/">Home</Link>
+        <Active to="/">Home</Active>
       </li>
       <li className="nav-links py-2 md:px-6 px-2">
-        <Link to="/men">Men</Link>
+        <Active to="/men">Men</Active>
       </li>
       <li className="nav-links py-2 md:px-6 px-2">
-        <Link to="/kids">Kids</Link>
+        <Active to="/kids">Kids</Active>
       </li>
       <li className="nav-links py-2 md:px-6 px-2">
-        <Link to="/women">Women</Link>
+        <Active to="/women">Women</Active>
       </li>
 
       <li className="nav-links py-2 md:px-6 px-2">
-        <Link to="/kids">Couples</Link>
+        <Active to="/kids">Couples</Active>
       </li>
 
       {cart.length > 0 && (
@@ -65,8 +78,8 @@ const Navber = () => {
   );
 
   // dashboard
-  let isTailor = true;
-
+  let isTailor = false;
+  let isAdmin = true;
   return (
     <div className="font-serif">
       <div className="containers">
@@ -93,19 +106,19 @@ const Navber = () => {
 
               <ul
                 tabIndex={0}
-                className="menu menu-sm py-8 px-4  dropdown-content md:w-[300px] w-auto flex flex-col gap-3 mt-3 z-[10] bg-neumor text-center text-black "
+                className="menu menu-sm py-8 px-4  dropdown-content md:w-[300px] w-auto flex flex-col gap-3 mt-3 z-[10] bg-neumor text-xs text-center text-black "
               >
                 <div className="md:hidden block">{navOptions}</div>
                 <h4 className="font-semibold bg-black text-white rounded-md py-1 px-2">
                   Categories
                 </h4>
                 <li onClick={() => setMen(!men)}>
-                  <span className="nav-link  p-2 ">
+                  <span className="nav-link  p-2 text-xs">
                     Men
                     {!men ? <FaAngleDown /> : <FaAngleRight />}
                   </span>
                   {!men ? (
-                    <ul className="flex  flex-col gap-4 rounded-md py-4 px-4 text-left ">
+                    <ul className="flex  flex-col gap-4 rounded-md py-4 px-4 text-left text-xs ">
                       <li className="nav-link p-2">Pant</li>
                       <li className="nav-link p-2">Shirt</li>
                       <li className="nav-link p-2">T-Shirt</li>
@@ -118,12 +131,12 @@ const Navber = () => {
                 </li>
                 <li className=" relative">
                   <span onClick={() => setKids(!kids)} className="nav-link p-2">
-                    <span>Kids</span>
+                    <span className="text-xs">Kids</span>
                     <span>{!kids ? <FaAngleDown /> : <FaAngleRight />}</span>
                   </span>
 
                   {!kids ? (
-                    <ul className="flex  flex-col gap-4 rounded-md py-4 px-4 text-left">
+                    <ul className="flex  flex-col gap-4 rounded-md py-4 px-4 text-left text-xs">
                       <li className="nav-link p-2">Pant</li>
                       <li className="nav-link p-2">Shirt</li>
                       <li className="nav-link p-2 ">T-Shirt</li>
@@ -139,12 +152,12 @@ const Navber = () => {
                     onClick={() => setWomen(!women)}
                     className=" nav-link p-2 "
                   >
-                    <span>Women</span>
+                    <span className="text-xs">Women</span>
                     <span>{!women ? <FaAngleDown /> : <FaAngleRight />}</span>
                   </span>
 
                   {!women ? (
-                    <ul className="flex text-left  flex-col gap-4 rounded-md py-4 px-4">
+                    <ul className="flex text-left  flex-col gap-4 rounded-md py-4 px-4 text-xs">
                       <li className="nav-link p-2">Pant</li>
                       <li className="nav-link p-2">T-Shirt</li>
                       <li className="nav-link p-2 ">Shari</li>
@@ -157,13 +170,13 @@ const Navber = () => {
                 </li>
 
                 <li onClick={() => setCouple(!couple)}>
-                  <span className="nav-link p-2  ">
-                    <span>Couples</span>
+                  <span className="nav-link p-2">
+                    <span className="text-xs">Couples</span>
                     <span>{!couple ? <FaAngleDown /> : <FaAngleRight />}</span>
                   </span>
 
                   {!couple ? (
-                    <ul className="flex  flex-col gap-4 rounded-md py-4 px-4 text-left">
+                    <ul className="flex  flex-col gap-4 rounded-md py-4 px-4 text-left text-xs">
                       <li className="nav-link p-2 ">Panjabi + Shari</li>
                       <li className="nav-link p-2">Shirt + Three pies</li>
                     </ul>
@@ -175,7 +188,7 @@ const Navber = () => {
             </div>
           </div>
           <div className="navbar-center md:block hidden">
-            <ul>{navOptions}</ul>
+            <ul className="text-xs">{navOptions}</ul>
           </div>
           <div className="navbar-end">
             {/* search btn */}
@@ -253,30 +266,19 @@ const Navber = () => {
               } ${user ? "block" : "hidden"}`}
             >
               {user && (
-                <ul>
-                  {/* {isTailor && (
-                    <li>
-                      <Link to={"/dashboard/tailor"}>Dashboard</Link>
-                    </li>
-                  )} */}
-
-                  {/* {isAdmin && (
-                  <li>
-                    <Link to={"/dashboard/admin"}>Dashboard</Link>
-                  </li>
-                )}
-                {!isInstructor && !isAdmin && (
-                  <li>
-                    <Link to={"/dashboard/users"}>Dashboard</Link>
-                  </li>
-                )} */}
+                <ul className="text-xs">
                   <li className="nav-link py-2 px-2 mt-2 cursor-pointer">
                     <Link to="/userdashboard">Profile</Link>
                   </li>
 
                   {isTailor && (
                     <li className=" nav-link py-2  px-2 mt-2 cursor-pointer">
-                      <Link to={"/dashboard/tailor"}>Dashboard</Link>
+                      <Link to={"/dashboard"}>Dashboard</Link>
+                    </li>
+                  )}
+                  {isAdmin && (
+                    <li className=" nav-link py-2  px-2 mt-2 cursor-pointer">
+                      <Link to={"/dashboard"}>Dashboard</Link>
                     </li>
                   )}
                   <li

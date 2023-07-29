@@ -10,6 +10,11 @@ import ViewProduct from "../Components/ViewProduct/ViewProduct";
 import ManCollections from "../Components/Collections/ManCollections/ManCollections";
 import UserDashboard from "../Pages/UserdDashboard/UserDashboard";
 import TailorDashboard from "../Pages/TailorDashboard/TailorDashboard";
+import HomeDashboard from "../Components/TailorDashboard/HomeDashboard/HomeDashboard";
+import AddProducts from "../Components/TailorDashboard/addProduct/AddProducts";
+import AllProducts from "../Components/TailorDashboard/AllProducts/AllProducts";
+import EditProduct from "../Components/TailorDashboard/EditProduct/EditProduct";
+import ManageUsers from "../Components/TailorDashboard/Admin/ManageProduct/ManageUsers";
 
 const routes = createBrowserRouter([
   {
@@ -57,8 +62,32 @@ const routes = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard/tailor",
+    path: "/dashboard",
     element: <TailorDashboard />,
+    children: [
+      {
+        path: "/dashboard/tailor",
+        element: <HomeDashboard />,
+      },
+      {
+        path: "/dashboard/tailor/addProduct",
+        element: <AddProducts />,
+      },
+      {
+        path: "/dashboard/tailor/ownProduct",
+        element: <AllProducts />,
+      },
+      {
+        path: "/dashboard/tailor/ownProducts/:id",
+        element: <EditProduct />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
+      },
+      {
+        path: "/dashboard/admin/manageProduct",
+        element: <ManageUsers />,
+      },
+    ],
   },
 ]);
 
